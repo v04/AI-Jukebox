@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* --------------------------------------------------
+   1. Design tokens (colors, radii, etc.)
+   -------------------------------------------------- */
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --border: 240 5.9% 90%;
+  }
+}
+
+/* --------------------------------------------------
+   2. Global resets & base styling
+   -------------------------------------------------- */
+@layer base {
+  *, ::before, ::after {
+    @apply box-border;
+  }
+
+  body {
+    @apply m-0 p-0 min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] font-sans;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.2);
+    border-radius: 4px;
+  }
+}
+
+/* --------------------------------------------------
+   3. Custom components utilities
+   -------------------------------------------------- */
+@layer components {
+  .chat-card {
+    @apply bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))] rounded-2xl shadow-lg p-4;
+  }
+
+  .modal-content {
+    @apply bg-[hsl(var(--card))] text-[hsl(var(--card-foreground))] rounded-xl shadow-2xl p-6;
+  }
+
+  .toast {
+    @apply fixed bottom-4 right-4 bg-[hsl(var(--card))] text-[hsl(var(--foreground))] px-6 py-3 rounded-lg shadow-lg;
+  }
+}
+
+/* --------------------------------------------------
+   4. Extra utility classes
+   -------------------------------------------------- */
+@layer utilities {
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+  .border-theme {
+    border: 1px solid hsl(var(--border));
+  }
+  .rounded-theme {
+    border-radius: var(--radius);
+  }
+}
